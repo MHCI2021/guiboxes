@@ -18,7 +18,6 @@ class DragBox {
   double newposition;
   Point start;
   Point activePoint;
-  //Size size;
   DragBox(LRTB initPosition, LRTB initBounds){
     this.o=initPosition;
     this.b =initBounds;
@@ -120,8 +119,6 @@ class DragBox {
     if (dragside == DRAGSIDE.LEFT) return drawLeft(size);
     if (dragside == DRAGSIDE.RIGHT) return drawRight(size);
     return drawBox(size);
-    //
-    //
   }
 
   Path drawBox(Size size) {
@@ -157,12 +154,7 @@ class DragBox {
       mid.x - size.width* ( o.right -o.left )/2, //x1,
       mid.y, //y1,
        mid.x, mid.y
-      // size.width * o.left, //x2,
-      // size.height * o.bottom, //y2
     );
-    //
-    // path.lineTo(size.width*right, size.height*top);
- //   path.moveTo(mid.x, mid.y);
     path.quadraticBezierTo(
       mid.x + size.width* ( o.right -o.left )/2, //x1,
       mid.y, //y1,
@@ -171,8 +163,6 @@ class DragBox {
     );
     path.lineTo(size.width *o.right, size.height *o.top);
     path.lineTo(size.width *o.left, size.height *o.top);
-    //path.lineTo(size.width *o.left, size.height *o.bottom);
-    //path.close();
 
     return path;
   }
@@ -193,8 +183,6 @@ class DragBox {
       mid.x-size.width* ( o.right -o.left )/2,
       mid.y, //y1,
       mid.x, mid.y
-      // size.width *o.left, //x2,
-      // size.height *o.top, //y2
     );
 
   
@@ -207,8 +195,6 @@ class DragBox {
     );
     path.lineTo(size.width *o.right, size.height *o.bottom);
     path.lineTo(size.width *o.left, size.height *o.bottom);
-   // path.lineTo(size.width *o.left, size.height *o.top);
-  //  path.close();
 
     return path;
   }
@@ -223,7 +209,6 @@ class DragBox {
     mid = Point(midPointX, size.height * (o.top + (o.bottom -o.top) / 2));
 
     final path = Path();
-    //path.moveTo(mid.x, mid.y);
     path.moveTo(size.width *o.right, size.height *o.top);
     path.lineTo(size.width *o.left, size.height *o.top);
     // draw the curvedo.left side curve
@@ -231,12 +216,7 @@ class DragBox {
       mid.x, //x1,
       mid.y -size.height* ( o.bottom -o.top )/2, //y1,
       mid.x, mid.y
-      // size.width *o.left, //x2,
-      // size.height *o.top, //y2
     );
-    //
-    // path.lineTo(size.width*right, size.height*top);
-    //path.moveTo(mid.x, mid.y);
     path.quadraticBezierTo(
       mid.x, //x1,
       mid.y +size.height* ( o.bottom -o.top )/2, //y1,
@@ -245,9 +225,6 @@ class DragBox {
     );
     path.lineTo(size.width *o.right, size.height *o.bottom);
     path.lineTo(size.width *o.right, size.height *o.top);
-   // path.lineTo(size.width *o.left, size.height *o.top);
-    //path.close();
-
     return path;
   }
 
@@ -261,8 +238,6 @@ class DragBox {
     mid = Point(midPointX, size.height * (o.top + (o.bottom -o.top) / 2));
 
     final path = Path();
- //   path.moveTo(mid.x, mid.y);  // draw the curvedo.left side curve
-
     path.moveTo(size.width *o.left, size.height *o.top);
     path.lineTo(size.width *o.right, size.height *o.top);
     
@@ -271,11 +246,7 @@ class DragBox {
       mid.y - size.height* ( o.bottom -o.top )/2, //y1,
       mid.x, 
       mid.y
-      // size.width *o.right, //x2,
-      // size.height *o.top, //y2
     );
-    //
-    //path.moveTo(mid.x, mid.y);
     path.quadraticBezierTo(
       mid.x, //x1,
       mid.y + size.height* ( o.bottom -o.top )/2, //y1,
@@ -284,8 +255,6 @@ class DragBox {
     );
     path.lineTo(size.width *o.left, size.height *o.bottom);
     path.lineTo(size.width *o.left, size.height *o.top);
-    //path.lineTo(size.width *o.right, size.height *o.top);
-    //path.close();
 
     return path;
   }

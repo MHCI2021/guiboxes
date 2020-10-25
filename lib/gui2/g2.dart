@@ -1,7 +1,5 @@
 import 'dart:math';
 
-import 'package:ssui_hw1/gui2/controlpanel.dart';
-
 import 'boxInfo.dart';
 import 'data.dart';
 import 'dragbox.dart';
@@ -48,109 +46,6 @@ class _GuiScreen2State extends State<GuiScreen2> {
   @override
   void initState() {
     super.initState();
-
-    map = {
-      "color": {"type": "dropdown", "value": "", "items": colorOptions},
-      "shade": {"type": "dropdown", "value": incr, "items": incrList},
-      "opacity": {
-        "type": "updownarrows",
-        "incr": 0.1,
-        "max": 1.0,
-        "min": 0.0,
-        "value": 1.0
-      },
-      "borderColor": {
-        "type": "dropdown",
-        "value": "",
-        "items": colorOptions,
-      },
-      "borderThickness": {
-        "type": "updownarrows",
-        "incr": 1.0,
-        "min": 0.0,
-        "value": 2.0
-      },
-      "borderRadius": {
-        "type": "updownarrows",
-        "incr": 1.0,
-        "min": 0.0,
-        "value": 2.0
-      },
-      "decorate": {"type": "raisedButton", "text": "decorate", "value": false},
-      "hasChildren": {"value": false},
-      "singleChild": {
-        "type": "flatButton",
-        "text": "single Child",
-        "setLocation": "hasChildren",
-        "value": false,
-      }, //"color":(){ var b = map["hasChildren"]["value"]; if(b)print("true");return b?"red":"blue";}},
-      "children": {
-        "type": "flatButton",
-        "text": "children",
-        "expanded": true,
-        "setLocation": "hasChildren",
-        "value": true
-      }, // "color":(){return (map["hasChildren"]["value"])?"blue":""; }},
-      "centered": {
-        "type": "raisedButton",
-        "trueText": "center",
-        "falseText": "uncenter",
-        "value": true
-      },
-      "childType": {"value": CHILDTYPE.BOX},
-      "box": {
-        "type": "flatButton",
-        "text": "Box",
-        "setLocation": "childType",
-        "value": CHILDTYPE.BOX,
-      },
-      "image": {
-        "type": "flatButton",
-        "text": "Image",
-        "setLocation": "childType",
-        "value": CHILDTYPE.IMAGE,
-      },
-      "text": {
-        "type": "flatButton",
-        "text": "Text",
-        "setLocation": "childType",
-        "value": CHILDTYPE.TEXT,
-      },
-      "button": {
-        "type": "flatButton",
-        "text": "Button",
-        "expanded": true,
-        "setLocation": "childType",
-        "value": CHILDTYPE.BUTTON,
-      },
-      "textcolor": {"type": "dropdown", "value": "", "items": colorOptions},
-      "photoFromUrl": {"type": "dropdown", "value": "", "items": imges},
-      "hasImage": {
-        "type": "raisedButton",
-        "trueText": "remove Image",
-        "falseText": "remove Image",
-        "value": false
-      },
-      "hasPadding": {
-        "type": "raisedButton",
-        "trueText": "Remove Padding",
-        "falseText": "Add Padding",
-        "value": false,
-        "centered": true
-      },
-      "optionsOpen": {"type": "raisedButton", "text": "close", "value": false},
-      "bold": {"type": "iconButton", "icon": Icons.format_bold, "value": false},
-      "italic": {
-        "type": "iconButton",
-        "icon": Icons.format_italic,
-        "value": false
-      },
-      "nextLine": {
-        "type": "iconButton",
-        "icon": Icons.arrow_downward,
-        "value": false
-      },
-    };
 
     wm = WidgetManager(map: map, updateVal: updateVal);
     // lw= randomBlockList();
@@ -338,8 +233,7 @@ class _GuiScreen2State extends State<GuiScreen2> {
             ) //getBox: ({Widget child})=>getBox(child: child)
 
             ),
-        optionsWidget(),
-       // ControlPanel()
+        optionsWidget()
         //   wm.only("optionsOpen", optionsWidget(d.size)),
       ],
     );
@@ -347,6 +241,7 @@ class _GuiScreen2State extends State<GuiScreen2> {
 }
 
 // Main delagator gets taps and sends them down chain of deals with them on own
+
 
 class MainDelagator extends ChangeNotifier {
   //Set context for each setstate in order to  have access to widget tree info
@@ -434,73 +329,105 @@ class DragPainter extends CustomPainter {
 
 
 
-
-
-
-// dropPaint.color = Colors.grey;
-// dropPaint.style = PaintingStyle.fill;
-// wm.toWidget("opacity"),
-// Container(child: Row(children: wm.toWidgets(["color", "shade", "opacity"], additonalWidgets: {"0":Text("Color:")}) )),
-// wm.or("decorate", wm.toRow(["borderColor", "borderThickness", "borderRadius"], additional:{"0":Text("Border:")}), wm.toRaisedButton("decorate") ),
-// wm.toFlatButton("singleChild", extra: {"color":map["hasChildren"]["value"]?null:"blue"}),
-//  wm.toFlatButton("children", extra: {"color":map["hasChildren"]["value"]?"blue":null}),
-//  wm.onlyNot("hasChildren","centered"),
-// wm.onlyNot("hasChildren", {"box":{"color": (childType==CHILDTYPE.BOX)?"blue":null,}}),
-// "image":{"color": (childType==CHILDTYPE.IMAGE)?"blue":null,},
-// "text":{"color": (childType==CHILDTYPE.TEXT)?"blue":null,},
-// "button":{"color": (childType==CHILDTYPE.BUTTON)?"blue":null,},
-// })),
-//  wm.onlyNot("hasChildren",wm.toRow( {
-//     "box":{"color": (childType==CHILDTYPE.BOX)?"blue":null,},
-//   "image":{"color": (childType==CHILDTYPE.IMAGE)?"blue":null,},
-//   "text":{"color": (childType==CHILDTYPE.TEXT)?"blue":null,},
-//   "button":{"color": (childType==CHILDTYPE.BUTTON)?"blue":null,},
-//   })),
-
-//  wm.onlyNot("hasChildren",
-// // (!map["hasChildren"]["value"])?
-//   (childType==CHILDTYPE.BOX)? Container():
-//   (childType==CHILDTYPE.IMAGE)?   Row(
-//    children: wm.toWidgets(["hasImage","photoFromUrl"])
-//  ):
-//    (childType==CHILDTYPE.BUTTON)? Container():
-//     (childType==CHILDTYPE.TEXT)?textSettings():
-//      Container()),//: Container(),
-//  wm.toRaisedButton("hasPadding"),
-// wm.toRaisedButton("optionsOpen"),
-
-// Widget getBox({Widget child}){
-//          CHILDTYPE childType=map["childType"]["value"];
-//         return Container(
-//             decoration:
-//             BoxDecoration(
-//               color:boxColor(),//boxColor,
-//               border: map["decorate"]["value"]?Border.all(width:map["borderThickness"]["value"], color: colorFromString(map["borderColor"]["value"]),):null,
-//               borderRadius: map["decorate"]["value"]?BorderRadius.circular(map["borderRadius"]["value"]):null
-//             ),
-//             child: Padding(
-//               padding: EdgeInsets.all((map["hasPadding"]["value"])?8.0:0.0),
-//               child: (child!=null)? child:
-//               map["hasChildren"]["value"]
-//                   ? ListView( children: lw, )
-//                      : map["centered"]["value"]?Center(child:
-//                      (childType==CHILDTYPE.BOX)? child:
-//                       (childType==CHILDTYPE.IMAGE)? (map["photoFromUrl"]["value"]!="")?Image.network(map["photoFromUrl"]["value"], fit: BoxFit.fill,):Container():
-//                       //(photoFromAsset!="")?Image.asset("assets/images/$photoFromAsset"):Container():
-//                        (childType==CHILDTYPE.BUTTON)? Container():
-//                         (childType==CHILDTYPE.TEXT)?textEdits[0].toWidget(children: textEdits.sublist(1), recognizers: textTapDetectors)://Text(textEditingController.text):
-//                           Container()
-//                      ):
-//                        (childType==CHILDTYPE.BOX)? child:
-//                       (childType==CHILDTYPE.IMAGE)? (map["photoFromUrl"]["value"]!="")?Image.network(map["photoFromUrl"]["value"], fit: BoxFit.fill,):Container():
-//                       //(photoFromAsset!="")?Image.asset("assets/images/$photoFromAsset"):Container():
-//                        (childType==CHILDTYPE.BUTTON)? Container():
-//                         (childType==CHILDTYPE.TEXT)?textEdits[0].toWidget(children: textEdits.sublist(1), recognizers: textTapDetectors)://Text(textEditingController.text):
-//                           Container()
-//             ),
-//           );
-//       }
-
-//       BoxInfo saveBoxInfo(){
-
-//       }
+    // map = {
+    //   "color": {"type": "dropdown", "value": "", "items": colorOptions},
+    //   "shade": {"type": "dropdown", "value": incr, "items": incrList},
+    //   "opacity": {
+    //     "type": "updownarrows",
+    //     "incr": 0.1,
+    //     "max": 1.0,
+    //     "min": 0.0,
+    //     "value": 1.0
+    //   },
+    //   "borderColor": {
+    //     "type": "dropdown",
+    //     "value": "",
+    //     "items": colorOptions,
+    //   },
+    //   "borderThickness": {
+    //     "type": "updownarrows",
+    //     "incr": 1.0,
+    //     "min": 0.0,
+    //     "value": 2.0
+    //   },
+    //   "borderRadius": {
+    //     "type": "updownarrows",
+    //     "incr": 1.0,
+    //     "min": 0.0,
+    //     "value": 2.0
+    //   },
+    //   "decorate": {"type": "raisedButton", "text": "decorate", "value": false},
+    //   "hasChildren": {"value": false},
+    //   "singleChild": {
+    //     "type": "flatButton",
+    //     "text": "single Child",
+    //     "setLocation": "hasChildren",
+    //     "value": false,
+    //   }, //"color":(){ var b = map["hasChildren"]["value"]; if(b)print("true");return b?"red":"blue";}},
+    //   "children": {
+    //     "type": "flatButton",
+    //     "text": "children",
+    //     "expanded": true,
+    //     "setLocation": "hasChildren",
+    //     "value": true
+    //   }, // "color":(){return (map["hasChildren"]["value"])?"blue":""; }},
+    //   "centered": {
+    //     "type": "raisedButton",
+    //     "trueText": "center",
+    //     "falseText": "uncenter",
+    //     "value": true
+    //   },
+    //   "childType": {"value": CHILDTYPE.BOX},
+    //   "box": {
+    //     "type": "flatButton",
+    //     "text": "Box",
+    //     "setLocation": "childType",
+    //     "value": CHILDTYPE.BOX,
+    //   },
+    //   "image": {
+    //     "type": "flatButton",
+    //     "text": "Image",
+    //     "setLocation": "childType",
+    //     "value": CHILDTYPE.IMAGE,
+    //   },
+    //   "text": {
+    //     "type": "flatButton",
+    //     "text": "Text",
+    //     "setLocation": "childType",
+    //     "value": CHILDTYPE.TEXT,
+    //   },
+    //   "button": {
+    //     "type": "flatButton",
+    //     "text": "Button",
+    //     "expanded": true,
+    //     "setLocation": "childType",
+    //     "value": CHILDTYPE.BUTTON,
+    //   },
+    //   "textcolor": {"type": "dropdown", "value": "", "items": colorOptions},
+    //   "photoFromUrl": {"type": "dropdown", "value": "", "items": imges},
+    //   "hasImage": {
+    //     "type": "raisedButton",
+    //     "trueText": "remove Image",
+    //     "falseText": "remove Image",
+    //     "value": false
+    //   },
+    //   "hasPadding": {
+    //     "type": "raisedButton",
+    //     "trueText": "Remove Padding",
+    //     "falseText": "Add Padding",
+    //     "value": false,
+    //     "centered": true
+    //   },
+    //   "optionsOpen": {"type": "raisedButton", "text": "close", "value": false},
+    //   "bold": {"type": "iconButton", "icon": Icons.format_bold, "value": false},
+    //   "italic": {
+    //     "type": "iconButton",
+    //     "icon": Icons.format_italic,
+    //     "value": false
+    //   },
+    //   "nextLine": {
+    //     "type": "iconButton",
+    //     "icon": Icons.arrow_downward,
+    //     "value": false
+    //   },
+    // };

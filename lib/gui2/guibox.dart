@@ -249,39 +249,3 @@ class GuiBox{
       return Stack(children: out);
     }
 }
-
- //&& !passedInChild && guiActive&& !passedInChild print("SELF MULTITAP");
-
-
-  //bool isFocused()=>(myTapCount>0 && currentIndex==null);
-         //isFocused()?getBox(child:(childrenBoxes.isNotEmpty)?toStack(s, refresh: refresh, getBox: getBox):null):
-        // (childrenBoxes.isNotEmpty)?toStack(s, refresh: refresh, getBox: getBox):
-        // Center(child: Text("Box X"))
-
-//Function({Widget child}) getBox
-      //print(screenSize);
-  // void handleChildClick(){
-
-  // }
-  // void handleSelfClick(){
-
-  // }
-
-                //   if(tapCount<1){
-                //   setFocus(_boxInfo);
-                //   isfoc=true;
-                // }
-  // GuiBox b= GuiBox(LRTB(rs.x, rs.x, rs.y, rs.y), color: RandomColor.next());
-  //           childrenBoxes.add(b);
-  //           currentIndex=childrenBoxes.length-1;
-  //           setBounds();
-  //             childrenBoxes.last.fitSpace(shrink:0.75);
-  //              print("CHILD LOCATION");
-  //              childrenBoxes.last.loc.prnt();
-
-
-//  GuiBox b= GuiBox(LRTB(rs.x, rs.x, rs.y, rs.y),color: RandomColor.next());
-//                   childrenBoxes.add(b); 
-//                   currentIndex=childrenBoxes.length-1;
-//                   setBounds();
-//                   childrenBoxes.last.fitSpace(shrink:0.75);

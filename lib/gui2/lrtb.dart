@@ -13,8 +13,6 @@ class LRTB{
      print("left: $left, right:$right, top: $top, bottom: $bottom");
    }
 
-
-
    bool isWithin(Point clickLocation)=>
      (clickLocation.x > left &&
         clickLocation.x < right &&
@@ -25,6 +23,7 @@ class LRTB{
       Point p=Point(
         (clickLocation.x-left)/(right-left),
         (clickLocation.y-top)/(bottom-top), );
+        
        // print("click");
       //  prit(clickLocation);
 

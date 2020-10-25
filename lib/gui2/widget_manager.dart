@@ -19,8 +19,6 @@ class WidgetManager {
 
     if (chosen is Widget) return chosen;
     return toWidget(chosen);
-
-    //return isTrue? toWidget(first):toWidget(second);
   }
 
   Widget only(var test, var first) {
